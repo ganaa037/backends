@@ -4,7 +4,7 @@ import { userRouter } from "./routes/user.js";
 const port = 8000;
 const app = express();
 app.use(json());
-app.use(userRouter);
+app.use("/user", userRouter);
 let order = [];
 let users = [];
 
