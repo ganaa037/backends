@@ -1,45 +1,13 @@
 import express, { json } from "express";
 import { v4 as uuidv4 } from "uuid";
+import { userRouter } from "./routes/user.js";
 const port = 8000;
 const app = express();
 app.use(json());
-
+app.use(userRouter);
+let order = [];
 let users = [];
-app.post("/user/create", (request, response) => {
-  const { username, gender, age, email } = request.body;
-  console.log(username, gender, age, email, "body");
-  users.push({
-    username,
-    gender,
-    age,
-    email,
-    id: uuidv4(),
-  });
-  console.log(users, "users");
 
-  response.send({
-    success: true,
-    message: "done,",
-  });
-});
-app.get("/users", (req, res) => {
-  res.send(users);
-});
-app.get("/user", (req, res) => {
-  const { id } = req.body;
-  const mail = users.find((users) => {
-    users.id === req.body.id;
-  });
-  res.send(mail);
-});
-app.delete("/user/delete", (req, res) => {
-  const { id } = req.body;
-  users = users.filter((user) => user.id !== id);
-  res.send({
-    success: true,
-    message: "removed",
-  });
-});
 // app.get("/", (req, res) => {
 //   res.send("hello world");
 // });
