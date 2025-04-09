@@ -10,8 +10,8 @@ import {
 export const userRouter = express.Router();
 
 userRouter
-  .post("/users/:id", CreateUser)
-  .get("/user", getUserById)
+  .post("/user/", CreateUser)
+  .get("/user:id", getUserById)
   .get("/user", getUsers)
   .delete("/user", userDelete)
   .put("/user", userUpdate);

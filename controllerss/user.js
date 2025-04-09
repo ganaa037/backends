@@ -28,7 +28,7 @@ export const getUserById = (req, res) => {
   });
   res.send(mail);
 };
-export const UserDelete = (req, res) => {
+export const userDelete = (req, res) => {
   const { id } = req.body;
   const users = users.filter((user) => user.id !== id);
   res.send({
@@ -36,7 +36,7 @@ export const UserDelete = (req, res) => {
     message: "removed",
   });
 };
-export const UserUpdate = (req, res) => {
+export const userUpdate = (req, res) => {
   const { id, username, email, gender, age } = req.body;
   const response = users.map((user) => {
     if (user.id == id) {
