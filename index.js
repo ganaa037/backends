@@ -1,12 +1,18 @@
 import express, { json } from "express";
-import { v4 as uuidv4 } from "uuid";
+
 import { userRouter } from "./routes/user.js";
-const port = 8000;
+import { orderRouter } from "./routes/order.js";
+import { config } from "dotenv";
+import cors from "cors";
+config();
+const port = process.env.PORT;
+
 const app = express();
+
 app.use(json());
+app.use(cors());
 app.use("/user", userRouter);
-let order = [];
-let users = [];
+app.use("/order", orderRouter);
 
 // app.get("/", (req, res) => {
 //   res.send("hello world");
@@ -35,5 +41,5 @@ let users = [];
 // });
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
+  console.log(`Server running at http://localhost:${port}`);
 });

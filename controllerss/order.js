@@ -1,4 +1,6 @@
-export const userCreate = (req, res) => {
+import { v4 as uuidv4 } from "uuid";
+const order = [];
+export const createOrder = (req, res) => {
   const { food, price, userId } = req.body;
   // let usern = "";
   // users.map((us) => {
@@ -8,7 +10,7 @@ export const userCreate = (req, res) => {
   // });
   order.push({
     userId,
-    name: usern,
+    // name: usern,
     food,
     price,
     createdAt: new Date(),
@@ -20,6 +22,6 @@ export const userCreate = (req, res) => {
     message: "amjilttai",
   });
 };
-app.get("/order", (req, res) => {
+export const getOrder = (req, res) => {
   res.send(order);
-});
+};

@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from "uuid";
-import { userRouter } from "../routes/user.js";
 
 const users = [];
 export const CreateUser = (request, response) => {
@@ -23,11 +22,15 @@ export const getUsers = (req, res) => {
   res.send(users);
 };
 export const getUserById = (req, res) => {
-  const { id } = userRouter;
-  const mail = users.find((users) => {
-    users.id === id;
+  const { id } = req.params;
+  console.log(id);
+
+  const user = users.find((user) => {
+    return user.id === id;
   });
-  res.send(mail);
+  console.log(user);
+
+  res.send(user);
 };
 export const userDelete = (req, res) => {
   const { id } = req.body;
