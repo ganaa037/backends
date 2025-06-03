@@ -14,7 +14,7 @@ app.use(cors());
 app.use("/user", userRouter);
 app.use("/order", orderRouter);
 
-// app.get("/", (req, res) => {
+// app.get("/", (req, res) => {s
 //   res.send("hello world");
 // });
 // app.get("/user", (req, res) => {
